@@ -15,6 +15,7 @@
 		0B920EFC2A0645DB00AC2603 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B920EFA2A0645DB00AC2603 /* Main.storyboard */; };
 		0B920EFE2A0645DD00AC2603 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B920EFD2A0645DD00AC2603 /* Assets.xcassets */; };
 		0B920F012A0645DD00AC2603 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B920EFF2A0645DD00AC2603 /* LaunchScreen.storyboard */; };
+		0B920F082A064F1B00AC2603 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B920F072A064F1B00AC2603 /* MainMenu.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		0B920EFB2A0645DB00AC2603 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0B920EFD2A0645DD00AC2603 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0B920F002A0645DD00AC2603 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		0B920F072A064F1B00AC2603 /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				0B920EFA2A0645DB00AC2603 /* Main.storyboard */,
 				0B920EFD2A0645DD00AC2603 /* Assets.xcassets */,
 				0B920EFF2A0645DD00AC2603 /* LaunchScreen.storyboard */,
+				0B920F072A064F1B00AC2603 /* MainMenu.swift */,
 			);
 			path = "Ufo-Shooter";
 			sourceTree = "<group>";
@@ -147,6 +150,7 @@
 				0B920EF72A0645DB00AC2603 /* GameScene.swift in Sources */,
 				0B920EF92A0645DB00AC2603 /* GameViewController.swift in Sources */,
 				0B920EF12A0645DB00AC2603 /* AppDelegate.swift in Sources */,
+				0B920F082A064F1B00AC2603 /* MainMenu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

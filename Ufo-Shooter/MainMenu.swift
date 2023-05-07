@@ -15,7 +15,21 @@ class MainMenu: SKScene {
         startbutton.position = CGPoint(x: frame.midX, y: frame.midY)
         startbutton.fontSize = 130
         startbutton.name = "Start Game"
+        startbutton.zPosition = 2;
+
         addChild(startbutton)
+        
+        let UFObackground = SKSpriteNode(imageNamed: "ufo")
+        UFObackground.size = self.size
+        UFObackground.position = CGPoint(x: frame.midX, y: self.size.height / 2.8)
+        UFObackground.setScale(0.2)
+        UFObackground.zPosition = 1;
+        addChild(UFObackground)
+        
+        let background = SKSpriteNode(color: SKColor.systemBrown, size: self.size)
+        background.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
+        background.zPosition = 0
+        addChild(background)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

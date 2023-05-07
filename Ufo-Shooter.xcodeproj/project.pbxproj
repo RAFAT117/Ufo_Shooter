@@ -16,6 +16,10 @@
 		0B920EFE2A0645DD00AC2603 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B920EFD2A0645DD00AC2603 /* Assets.xcassets */; };
 		0B920F012A0645DD00AC2603 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B920EFF2A0645DD00AC2603 /* LaunchScreen.storyboard */; };
 		0B920F082A064F1B00AC2603 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B920F072A064F1B00AC2603 /* MainMenu.swift */; };
+		0B920F0A2A0653BA00AC2603 /* ufo.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B920F092A0653BA00AC2603 /* ufo.png */; };
+		0B920F0C2A0653BE00AC2603 /* bullet.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B920F0B2A0653BE00AC2603 /* bullet.png */; };
+		0B920F0E2A0653C300AC2603 /* enemy.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B920F0D2A0653C300AC2603 /* enemy.png */; };
+		0B920F102A065B5900AC2603 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B920F0F2A065B5900AC2603 /* background.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +33,10 @@
 		0B920EFD2A0645DD00AC2603 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0B920F002A0645DD00AC2603 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0B920F072A064F1B00AC2603 /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
+		0B920F092A0653BA00AC2603 /* ufo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ufo.png; sourceTree = "<group>"; };
+		0B920F0B2A0653BE00AC2603 /* bullet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bullet.png; sourceTree = "<group>"; };
+		0B920F0D2A0653C300AC2603 /* enemy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enemy.png; sourceTree = "<group>"; };
+		0B920F0F2A065B5900AC2603 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,12 +72,16 @@
 				0B920EF02A0645DB00AC2603 /* AppDelegate.swift */,
 				0B920EF22A0645DB00AC2603 /* GameScene.sks */,
 				0B920EF42A0645DB00AC2603 /* Actions.sks */,
+				0B920F0F2A065B5900AC2603 /* background.png */,
 				0B920EF62A0645DB00AC2603 /* GameScene.swift */,
 				0B920EF82A0645DB00AC2603 /* GameViewController.swift */,
 				0B920EFA2A0645DB00AC2603 /* Main.storyboard */,
 				0B920EFD2A0645DD00AC2603 /* Assets.xcassets */,
 				0B920EFF2A0645DD00AC2603 /* LaunchScreen.storyboard */,
 				0B920F072A064F1B00AC2603 /* MainMenu.swift */,
+				0B920F092A0653BA00AC2603 /* ufo.png */,
+				0B920F0B2A0653BE00AC2603 /* bullet.png */,
+				0B920F0D2A0653C300AC2603 /* enemy.png */,
 			);
 			path = "Ufo-Shooter";
 			sourceTree = "<group>";
@@ -132,10 +144,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B920F0A2A0653BA00AC2603 /* ufo.png in Resources */,
+				0B920F0C2A0653BE00AC2603 /* bullet.png in Resources */,
+				0B920F0E2A0653C300AC2603 /* enemy.png in Resources */,
 				0B920EFC2A0645DB00AC2603 /* Main.storyboard in Resources */,
 				0B920EF32A0645DB00AC2603 /* GameScene.sks in Resources */,
 				0B920EFE2A0645DD00AC2603 /* Assets.xcassets in Resources */,
 				0B920F012A0645DD00AC2603 /* LaunchScreen.storyboard in Resources */,
+				0B920F102A065B5900AC2603 /* background.png in Resources */,
 				0B920EF52A0645DB00AC2603 /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -305,7 +321,7 @@
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -334,7 +350,7 @@
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

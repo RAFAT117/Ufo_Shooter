@@ -14,6 +14,7 @@ class GameScene: SKScene {
     
     var scorelabel : SKLabelNode!
     var liveslabel : SKLabelNode!
+    var bullets = [SKSpriteNode]()
 
     var score = 0
     var lives = 3
@@ -45,6 +46,23 @@ class GameScene: SKScene {
         UFO.setScale(0.3)
         UFO.zPosition = 2;
         addChild(UFO)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for touch in touches {
+            let location = touch.location(in: self)
+            let bullet = SKSpriteNode(imageNamed: "bullet")
+            bullet.position = UFO.position
+            bullet.setScale(0.14)
+            bullet.zPosition = 15
+            addChild(bullet)
+            bullets.append(bullet)
+            
+            let move = SKAction.move(to: CGPoint(x: location.x, y: self.size.height + bullet.size.height), duration: 1.0)
+            let remove = SKAction.removeFromParent()
+            let sequence = SKAction.sequence([move,remove])
+            bullet.run(sequence)
+        }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {

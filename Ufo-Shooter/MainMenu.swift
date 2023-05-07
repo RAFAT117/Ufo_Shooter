@@ -21,7 +21,7 @@ class MainMenu: SKScene {
         
         let UFObackground = SKSpriteNode(imageNamed: "ufo")
         UFObackground.size = self.size
-        UFObackground.position = CGPoint(x: frame.midX, y: self.size.height / 2.8)
+        UFObackground.position = CGPoint(x: frame.midX, y: self.size.height / 5)
         UFObackground.setScale(0.2)
         UFObackground.zPosition = 1;
         addChild(UFObackground)

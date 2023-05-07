@@ -13,7 +13,8 @@ class MainMenu: SKScene {
         let startbutton = SKLabelNode(text: "Start Game")
         startbutton.fontColor = .white
         startbutton.position = CGPoint(x: frame.midX, y: frame.midY)
-        startbutton.fontSize = 130
+        startbutton.fontSize = 50
+        startbutton.fontName = "HelveticaNeue-Bold"
         startbutton.name = "Start Game"
         startbutton.zPosition = 2;
 

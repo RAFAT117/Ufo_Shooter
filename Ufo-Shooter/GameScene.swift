@@ -15,7 +15,6 @@ class GameScene: SKScene {
     var scorelabel : SKLabelNode!
     var liveslabel : SKLabelNode!
     var bullets = [SKSpriteNode]()
-    var enemies = [SKSpriteNode]()
 
     var score = 0
     var lives = 3
@@ -47,27 +46,6 @@ class GameScene: SKScene {
         UFO.setScale(0.13)
         UFO.zPosition = 2;
         addChild(UFO)
-        
-        let spawn = SKAction.run(spawnEnemy)
-        let wait = SKAction.wait(forDuration: 1.0)
-        let sequence = SKAction.sequence([spawn, wait])
-        let spawnForEver = SKAction.repeatForever(sequence)
-        run(spawnForEver)
-    }
-    
-    func spawnEnemy(){
-        let enemy = SKSpriteNode(imageNamed: "enemy")
-        enemy.position = CGPoint(x: CGFloat.random(in: 0..<size.width), y: size.height)
-        enemy.zPosition = 1
-        enemy.setScale(0.1)
-        addChild(enemy)
-        enemies.append(enemy)
-        
-        let moveDown = SKAction.move(to: CGPoint (x: enemy.position.x, y: -enemy.size.height), duration: 3.0)
-        let remove = SKAction.removeFromParent()
-        let sequence = SKAction.sequence([moveDown, remove])
-        enemy.run(sequence)
-
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

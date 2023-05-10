@@ -7,8 +7,8 @@
 
 import SpriteKit
 import GameplayKit
-
-class GameScene: SKScene {
+//b
+class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var UFO: SKSpriteNode!
     
@@ -20,7 +20,16 @@ class GameScene: SKScene {
     var score = 0
     var lives = 3
     
+    let playerCategory = UInt32(1)
+    let enemyCategory = UInt32(2)
+    let bulletCategory = UInt32(4)
+    let coinCategory = UInt32(8)
+    
+    
     override func didMove(to view: SKView) {
+        
+        physicsWorld.contactDelegate = self
+
         
         let background = SKSpriteNode(imageNamed: "background")
         background.size = CGSize(width: self.size.width * 1.34, height: self.size.height * 1.34)
@@ -46,6 +55,12 @@ class GameScene: SKScene {
         UFO.position = CGPoint(x: frame.midX, y: UFO.size.height / 5)
         UFO.setScale(0.13)
         UFO.zPosition = 2;
+        UFO.physicsBody = SKPhysicsBody(circleOfRadius: UFO.size.width/2)
+        UFO.physicsBody?.isDynamic = false
+        UFO.physicsBody?.categoryBitMask = playerCategory
+        UFO.physicsBody?.contactTestBitMask = enemyCategory
+        
+
         addChild(UFO)
         
         let spawn = SKAction.run(spawnEnemy)
@@ -60,6 +75,9 @@ class GameScene: SKScene {
         enemy.position = CGPoint(x: CGFloat.random(in: 0..<size.width), y: size.height)
         enemy.zPosition = 1
         enemy.setScale(0.1)
+        enemy.physicsBody = SKPhysicsBody(circleOfRadius: enemy.size.width/2)
+        enemy.physicsBody?.categoryBitMask = enemyCategory
+        enemy.physicsBody?.contactTestBitMask = bulletCategory
         addChild(enemy)
         enemies.append(enemy)
         
@@ -70,6 +88,7 @@ class GameScene: SKScene {
 
     }
     
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
             let location = touch.location(in: self)
@@ -77,6 +96,9 @@ class GameScene: SKScene {
             bullet.position = UFO.position
             bullet.setScale(0.08)
             bullet.zPosition = 15
+            bullet.physicsBody = SKPhysicsBody(circleOfRadius: bullet.size.width/2)
+            bullet.physicsBody?.categoryBitMask = bulletCategory
+            bullet.physicsBody?.contactTestBitMask = enemyCategory
             addChild(bullet)
             bullets.append(bullet)
             
@@ -84,6 +106,49 @@ class GameScene: SKScene {
             let remove = SKAction.removeFromParent()
             let sequence = SKAction.sequence([move,remove])
             bullet.run(sequence)
+        }
+    }
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        let firstBody = contact.bodyA
+        let secondBody = contact.bodyB
+        
+        if (firstBody.categoryBitMask == bulletCategory && secondBody.categoryBitMask == enemyCategory) ||
+            (firstBody.categoryBitMask == enemyCategory && secondBody.categoryBitMask == bulletCategory) {
+            
+            if let bullet = bullets.first(where: { $0.physicsBody == firstBody || $0.physicsBody == secondBody }),
+               let enemy = enemies.first(where: { $0.physicsBody == firstBody || $0.physicsBody == secondBody }) {
+                bullet.removeFromParent()
+                enemy.removeFromParent()
+                bullets.removeAll(where: { $0 == bullet })
+                enemies.removeAll(where: { $0 == enemy })
+                score += 1
+                scorelabel.text = "Score: \(score)"
+            }
+            
+            
+        } else if (firstBody.categoryBitMask == enemyCategory && secondBody.categoryBitMask == playerCategory) ||
+                    (firstBody.categoryBitMask == playerCategory && secondBody.categoryBitMask == enemyCategory) {
+            if lives > 1 {
+                
+                lives -= 1
+                liveslabel.text = "Lives: \(lives)"
+                if let enemy = enemies.first(where: { $0.physicsBody == firstBody || $0.physicsBody == secondBody }) {
+                    enemy.removeFromParent()
+                    enemies.removeAll(where: { $0 == enemy })
+
+                }
+            } else {
+                lives = 0
+                liveslabel.text = "Lives: \(lives)"
+                UFO.removeFromParent()
+                isPaused = true
+                removeAllActions()
+                bullets.forEach { $0.removeFromParent() }
+                enemies.forEach { $0.removeFromParent() }
+                bullets.removeAll()
+                enemies.removeAll()
+            }
         }
     }
     

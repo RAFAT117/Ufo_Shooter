@@ -7,7 +7,7 @@
 
 import SpriteKit
 import GameplayKit
-//b
+
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var UFO: SKSpriteNode!
@@ -41,11 +41,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         scorelabel.position = CGPoint(x: self.size.width * 0.15, y: self.size.height * 0.9)
         scorelabel.fontSize = 25
         scorelabel.zPosition = 100;
+        scorelabel.fontName = "HelveticaNeue-Bold"
         addChild(scorelabel)
         
         liveslabel = SKLabelNode(text: "Lives: \(lives)")
         liveslabel.position = CGPoint(x: self.size.width * 0.85, y: self.size.height * 0.9)
         liveslabel.fontSize = 25
+        liveslabel.fontName = "HelveticaNeue-Bold"
         liveslabel.zPosition = 100;
         addChild(liveslabel)
         
@@ -142,12 +144,47 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 lives = 0
                 liveslabel.text = "Lives: \(lives)"
                 UFO.removeFromParent()
+                
+                let gameover  = GameoverScene(size: size)
+                gameover.scaleMode = scaleMode
+                view?.presentScene(gameover)
+                
+                
                 isPaused = true
                 removeAllActions()
                 bullets.forEach { $0.removeFromParent() }
                 enemies.forEach { $0.removeFromParent() }
                 bullets.removeAll()
                 enemies.removeAll()
+            }
+        }
+    }
+    
+    override func update(_ currentTime: TimeInterval) {
+        enemies.forEach { enemy in
+            if enemy.position.y <= 0 {
+                enemy.removeFromParent()
+                enemies.removeAll(where: { $0 == enemy })
+                if lives > 1 {
+                    lives -= 1
+                    liveslabel.text = "Lives: \(lives)"
+                } else {
+                    lives = 0
+                    liveslabel.text = "Lives: \(lives)"
+                    UFO.removeFromParent()
+                    
+                    let gameover  = GameoverScene(size: size)
+                    gameover.scaleMode = scaleMode
+                    view?.presentScene(gameover)
+                    
+                    isPaused = true
+                    removeAllActions()
+                    bullets.forEach { $0.removeFromParent() }
+                    enemies.forEach { $0.removeFromParent() }
+                    bullets.removeAll()
+                    enemies.removeAll()
+                }
+                
             }
         }
     }

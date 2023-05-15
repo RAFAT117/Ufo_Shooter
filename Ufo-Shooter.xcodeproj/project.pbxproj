@@ -20,6 +20,11 @@
 		0B920F0C2A0653BE00AC2603 /* bullet.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B920F0B2A0653BE00AC2603 /* bullet.png */; };
 		0B920F0E2A0653C300AC2603 /* enemy.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B920F0D2A0653C300AC2603 /* enemy.png */; };
 		0B920F102A065B5900AC2603 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B920F0F2A065B5900AC2603 /* background.png */; };
+		0B920F1E2A0E5FAC00AC2603 /* GameoverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B920F1D2A0E5FAC00AC2603 /* GameoverScene.swift */; };
+		0B920F242A124D2B00AC2603 /* ShopScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B920F232A124D2B00AC2603 /* ShopScene.swift */; };
+		0B920F262A124D5F00AC2603 /* ship1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B920F252A124D5F00AC2603 /* ship1.png */; };
+		0B920F282A124D6300AC2603 /* ship2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B920F272A124D6300AC2603 /* ship2.png */; };
+		0B920F2A2A124D6600AC2603 /* ship3.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B920F292A124D6600AC2603 /* ship3.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +42,11 @@
 		0B920F0B2A0653BE00AC2603 /* bullet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bullet.png; sourceTree = "<group>"; };
 		0B920F0D2A0653C300AC2603 /* enemy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enemy.png; sourceTree = "<group>"; };
 		0B920F0F2A065B5900AC2603 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		0B920F1D2A0E5FAC00AC2603 /* GameoverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameoverScene.swift; sourceTree = "<group>"; };
+		0B920F232A124D2B00AC2603 /* ShopScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopScene.swift; sourceTree = "<group>"; };
+		0B920F252A124D5F00AC2603 /* ship1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ship1.png; sourceTree = "<group>"; };
+		0B920F272A124D6300AC2603 /* ship2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ship2.png; sourceTree = "<group>"; };
+		0B920F292A124D6600AC2603 /* ship3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ship3.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,9 +89,14 @@
 				0B920EFD2A0645DD00AC2603 /* Assets.xcassets */,
 				0B920EFF2A0645DD00AC2603 /* LaunchScreen.storyboard */,
 				0B920F072A064F1B00AC2603 /* MainMenu.swift */,
+				0B920F1D2A0E5FAC00AC2603 /* GameoverScene.swift */,
+				0B920F232A124D2B00AC2603 /* ShopScene.swift */,
 				0B920F092A0653BA00AC2603 /* ufo.png */,
-				0B920F0B2A0653BE00AC2603 /* bullet.png */,
 				0B920F0D2A0653C300AC2603 /* enemy.png */,
+				0B920F0B2A0653BE00AC2603 /* bullet.png */,
+				0B920F252A124D5F00AC2603 /* ship1.png */,
+				0B920F272A124D6300AC2603 /* ship2.png */,
+				0B920F292A124D6600AC2603 /* ship3.png */,
 			);
 			path = "Ufo-Shooter";
 			sourceTree = "<group>";
@@ -145,11 +160,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B920F0A2A0653BA00AC2603 /* ufo.png in Resources */,
+				0B920F262A124D5F00AC2603 /* ship1.png in Resources */,
 				0B920F0C2A0653BE00AC2603 /* bullet.png in Resources */,
 				0B920F0E2A0653C300AC2603 /* enemy.png in Resources */,
 				0B920EFC2A0645DB00AC2603 /* Main.storyboard in Resources */,
 				0B920EF32A0645DB00AC2603 /* GameScene.sks in Resources */,
 				0B920EFE2A0645DD00AC2603 /* Assets.xcassets in Resources */,
+				0B920F2A2A124D6600AC2603 /* ship3.png in Resources */,
+				0B920F282A124D6300AC2603 /* ship2.png in Resources */,
 				0B920F012A0645DD00AC2603 /* LaunchScreen.storyboard in Resources */,
 				0B920F102A065B5900AC2603 /* background.png in Resources */,
 				0B920EF52A0645DB00AC2603 /* Actions.sks in Resources */,
@@ -163,7 +181,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B920F242A124D2B00AC2603 /* ShopScene.swift in Sources */,
 				0B920EF72A0645DB00AC2603 /* GameScene.swift in Sources */,
+				0B920F1E2A0E5FAC00AC2603 /* GameoverScene.swift in Sources */,
 				0B920EF92A0645DB00AC2603 /* GameViewController.swift in Sources */,
 				0B920EF12A0645DB00AC2603 /* AppDelegate.swift in Sources */,
 				0B920F082A064F1B00AC2603 /* MainMenu.swift in Sources */,

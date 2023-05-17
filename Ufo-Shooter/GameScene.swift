@@ -145,6 +145,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 liveslabel.text = "Lives: \(lives)"
                 UFO.removeFromParent()
                 
+                let highscore = UserDefaults.standard.integer(forKey: "highscore")
+                if score > highscore {
+                    UserDefaults.standard.set(score, forKey: "highscore")
+                }
+                
                 let gameover  = GameoverScene(size: size)
                 gameover.scaleMode = scaleMode
                 view?.presentScene(gameover)
@@ -172,6 +177,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     lives = 0
                     liveslabel.text = "Lives: \(lives)"
                     UFO.removeFromParent()
+                    
+                    let highscore = UserDefaults.standard.integer(forKey: "highscore")
+                    if score > highscore {
+                        UserDefaults.standard.set(score, forKey: "highscore")
+                    }
                     
                     let gameover  = GameoverScene(size: size)
                     gameover.scaleMode = scaleMode

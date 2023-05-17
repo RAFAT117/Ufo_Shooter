@@ -8,7 +8,7 @@ import SpriteKit
 class GameoverScene: SKScene {
     
     let gameoverLabel =  SKLabelNode(text: "Game over")
-    let highScoreLabel =  SKLabelNode(text: "High score: 0")
+    let highScoreLabel =  SKLabelNode(text: "High Score: 0")
     let coinScoreLabel =  SKLabelNode(text: "Coins: 0")
     let playAgainButton =  SKLabelNode(text: "Play again")
     let shopbutton =  SKLabelNode(text: "Shop")
@@ -23,6 +23,8 @@ class GameoverScene: SKScene {
         gameoverLabel.fontSize = 50
         addChild(gameoverLabel)
         
+        let highScore = UserDefaults.standard.integer(forKey: "highscore")
+        highScoreLabel.text = "High Score: \(highScore)"
         highScoreLabel.fontName = "HelveticaNeue-Bold"
         highScoreLabel.position = CGPoint(x: frame.midX, y: self.size.height * 0.55)
         highScoreLabel.fontSize = 30

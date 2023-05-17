@@ -16,10 +16,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var liveslabel : SKLabelNode!
     var bullets = [SKSpriteNode]()
     var enemies = [SKSpriteNode]()
+    var coinsLabel: SKLabelNode!
 
     var score = 0
     var lives = 3
-    
+    var Onecoin = 0
+
     let playerCategory = UInt32(1)
     let enemyCategory = UInt32(2)
     let bulletCategory = UInt32(4)
@@ -51,6 +53,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         liveslabel.zPosition = 100;
         addChild(liveslabel)
         
+        // Set up coins label
+        coinsLabel = SKLabelNode(text: "Coins: \(Onecoin)")
+        coinsLabel.position = CGPoint(x: self.size.width * 0.50, y: self.size.height * 0.9)
+        coinsLabel.zPosition = 200
+        coinsLabel.fontName = "HelveticaNeue-Bold"
+        addChild(coinsLabel)
      
         
         UFO = SKSpriteNode(imageNamed: "ufo")

@@ -16,6 +16,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var liveslabel : SKLabelNode!
     var bullets = [SKSpriteNode]()
     var enemies = [SKSpriteNode]()
+    var coins = [SKSpriteNode]()
     var coinsLabel: SKLabelNode!
 
     var score = 0
@@ -134,7 +135,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 enemies.removeAll(where: { $0 == enemy })
                 score += 1
                 scorelabel.text = "Score: \(score)"
+                
+                // add a chance for a coin to drop when an enemy is destroyed
+                let random = arc4random_uniform(10) // generate a random number between 0 and 9
+                if random < 3 { // 30% chance
+                    let coin = SKSpriteNode(imageNamed: "coin")
+                    coin.setScale(0.02)
+                    coin.zPosition = 200
+                    coin.position = enemy.position // set the coin's initial position to the enemy's position
+                    coin.physicsBody = SKPhysicsBody(circleOfRadius: coin.size.width/2)
+                    coin.physicsBody?.categoryBitMask = coinCategory
+                    coin.physicsBody?.contactTestBitMask = playerCategory
+                    addChild(coin) // add the coin to the scene
+                    coins.append(coin)
+                }
             }
+            
             
             
         } else if (firstBody.categoryBitMask == enemyCategory && secondBody.categoryBitMask == playerCategory) ||

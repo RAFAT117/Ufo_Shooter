@@ -174,6 +174,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     UserDefaults.standard.set(score, forKey: "highscore")
                 }
                 
+                let coinscore = UserDefaults.standard.integer(forKey: "coin")
+                let newScore = coinscore + Onecoin
+                UserDefaults.standard.set(newScore, forKey: "coin")
+                
+                
                 let gameover  = GameoverScene(size: size)
                 gameover.scaleMode = scaleMode
                 view?.presentScene(gameover)
@@ -215,6 +220,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     if score > highscore {
                         UserDefaults.standard.set(score, forKey: "highscore")
                     }
+                    
+                    let coinscore = UserDefaults.standard.integer(forKey: "coin")
+                    let newScore = coinscore + Onecoin
+                    UserDefaults.standard.set(newScore, forKey: "coin")
                     
                     let gameover  = GameoverScene(size: size)
                     gameover.scaleMode = scaleMode

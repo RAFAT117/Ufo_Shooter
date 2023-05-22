@@ -30,6 +30,8 @@ class GameoverScene: SKScene {
         highScoreLabel.fontSize = 30
         addChild(highScoreLabel)
         
+        let coinscore = UserDefaults.standard.integer(forKey: "coin")
+        coinScoreLabel.text = "Coins: \(coinscore)"
         coinScoreLabel.fontName = "HelveticaNeue-Bold"
         coinScoreLabel.position = CGPoint(x: frame.midX, y: self.size.height * 0.6)
         coinScoreLabel.fontSize = 30

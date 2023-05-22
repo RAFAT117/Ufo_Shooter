@@ -16,13 +16,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var liveslabel : SKLabelNode!
     var bullets = [SKSpriteNode]()
     var enemies = [SKSpriteNode]()
-    var coins = [SKSpriteNode]()
-    var coinsLabel: SKLabelNode!
 
     var score = 0
     var lives = 3
-    var Onecoin = 0
-
+    
     let playerCategory = UInt32(1)
     let enemyCategory = UInt32(2)
     let bulletCategory = UInt32(4)
@@ -54,12 +51,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         liveslabel.zPosition = 100;
         addChild(liveslabel)
         
-        // Set up coins label
-        coinsLabel = SKLabelNode(text: "Coins: \(Onecoin)")
-        coinsLabel.position = CGPoint(x: self.size.width * 0.50, y: self.size.height * 0.9)
-        coinsLabel.zPosition = 200
-        coinsLabel.fontName = "HelveticaNeue-Bold"
-        addChild(coinsLabel)
      
         
         UFO = SKSpriteNode(imageNamed: "ufo")
@@ -135,22 +126,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 enemies.removeAll(where: { $0 == enemy })
                 score += 1
                 scorelabel.text = "Score: \(score)"
-                
-                // add a chance for a coin to drop when an enemy is destroyed
-                let random = arc4random_uniform(10) // generate a random number between 0 and 9
-                if random < 3 { // 30% chance
-                    let coin = SKSpriteNode(imageNamed: "coin")
-                    coin.setScale(0.02)
-                    coin.zPosition = 200
-                    coin.position = enemy.position // set the coin's initial position to the enemy's position
-                    coin.physicsBody = SKPhysicsBody(circleOfRadius: coin.size.width/2)
-                    coin.physicsBody?.categoryBitMask = coinCategory
-                    coin.physicsBody?.contactTestBitMask = playerCategory
-                    addChild(coin) // add the coin to the scene
-                    coins.append(coin)
-                }
             }
-            
             
             
         } else if (firstBody.categoryBitMask == enemyCategory && secondBody.categoryBitMask == playerCategory) ||
@@ -162,22 +138,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 if let enemy = enemies.first(where: { $0.physicsBody == firstBody || $0.physicsBody == secondBody }) {
                     enemy.removeFromParent()
                     enemies.removeAll(where: { $0 == enemy })
-                    
+
                 }
             } else {
                 lives = 0
                 liveslabel.text = "Lives: \(lives)"
                 UFO.removeFromParent()
-                
-                let highscore = UserDefaults.standard.integer(forKey: "highscore")
-                if score > highscore {
-                    UserDefaults.standard.set(score, forKey: "highscore")
-                }
-                
-                let coinscore = UserDefaults.standard.integer(forKey: "coin")
-                let newScore = coinscore + Onecoin
-                UserDefaults.standard.set(newScore, forKey: "coin")
-                
                 
                 let gameover  = GameoverScene(size: size)
                 gameover.scaleMode = scaleMode
@@ -190,15 +156,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 enemies.forEach { $0.removeFromParent() }
                 bullets.removeAll()
                 enemies.removeAll()
-            }
-        } else if (firstBody.categoryBitMask == playerCategory && secondBody.categoryBitMask == coinCategory) ||
-                    (firstBody.categoryBitMask == playerCategory && secondBody.categoryBitMask == coinCategory) {
-            // The player has collected a coin
-            if let coin = coins.first(where: { $0.physicsBody == firstBody || $0.physicsBody == secondBody }) {
-                coin.removeFromParent()
-                coins.removeAll(where: { $0 == coin })
-                Onecoin += 1 // Increment the coins count
-                coinsLabel.text = "Coins: \(Onecoin)" // Update the label
             }
         }
     }
@@ -215,15 +172,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     lives = 0
                     liveslabel.text = "Lives: \(lives)"
                     UFO.removeFromParent()
-                    
-                    let highscore = UserDefaults.standard.integer(forKey: "highscore")
-                    if score > highscore {
-                        UserDefaults.standard.set(score, forKey: "highscore")
-                    }
-                    
-                    let coinscore = UserDefaults.standard.integer(forKey: "coin")
-                    let newScore = coinscore + Onecoin
-                    UserDefaults.standard.set(newScore, forKey: "coin")
                     
                     let gameover  = GameoverScene(size: size)
                     gameover.scaleMode = scaleMode

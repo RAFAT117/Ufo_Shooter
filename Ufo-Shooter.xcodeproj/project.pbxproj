@@ -25,6 +25,7 @@
 		0B920F262A124D5F00AC2603 /* ship1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B920F252A124D5F00AC2603 /* ship1.png */; };
 		0B920F282A124D6300AC2603 /* ship2.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B920F272A124D6300AC2603 /* ship2.png */; };
 		0B920F2A2A124D6600AC2603 /* ship3.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B920F292A124D6600AC2603 /* ship3.png */; };
+		0BBB9F422A14DB80000570A3 /* coin.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BBB9F412A14DB80000570A3 /* coin.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		0B920F252A124D5F00AC2603 /* ship1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ship1.png; sourceTree = "<group>"; };
 		0B920F272A124D6300AC2603 /* ship2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ship2.png; sourceTree = "<group>"; };
 		0B920F292A124D6600AC2603 /* ship3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ship3.png; sourceTree = "<group>"; };
+		0BBB9F412A14DB80000570A3 /* coin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coin.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 				0B920F252A124D5F00AC2603 /* ship1.png */,
 				0B920F272A124D6300AC2603 /* ship2.png */,
 				0B920F292A124D6600AC2603 /* ship3.png */,
+				0BBB9F412A14DB80000570A3 /* coin.png */,
 			);
 			path = "Ufo-Shooter";
 			sourceTree = "<group>";
@@ -169,6 +172,7 @@
 				0B920F2A2A124D6600AC2603 /* ship3.png in Resources */,
 				0B920F282A124D6300AC2603 /* ship2.png in Resources */,
 				0B920F012A0645DD00AC2603 /* LaunchScreen.storyboard in Resources */,
+				0BBB9F422A14DB80000570A3 /* coin.png in Resources */,
 				0B920F102A065B5900AC2603 /* background.png in Resources */,
 				0B920EF52A0645DB00AC2603 /* Actions.sks in Resources */,
 			);

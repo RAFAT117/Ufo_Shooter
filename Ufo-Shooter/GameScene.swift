@@ -162,7 +162,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 if let enemy = enemies.first(where: { $0.physicsBody == firstBody || $0.physicsBody == secondBody }) {
                     enemy.removeFromParent()
                     enemies.removeAll(where: { $0 == enemy })
-
+                    
                 }
             } else {
                 lives = 0
@@ -185,6 +185,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 enemies.forEach { $0.removeFromParent() }
                 bullets.removeAll()
                 enemies.removeAll()
+            }
+        } else if (firstBody.categoryBitMask == playerCategory && secondBody.categoryBitMask == coinCategory) ||
+                    (firstBody.categoryBitMask == playerCategory && secondBody.categoryBitMask == coinCategory) {
+            // The player has collected a coin
+            if let coin = coins.first(where: { $0.physicsBody == firstBody || $0.physicsBody == secondBody }) {
+                coin.removeFromParent()
+                coins.removeAll(where: { $0 == coin })
+                Onecoin += 1 // Increment the coins count
+                coinsLabel.text = "Coins: \(Onecoin)" // Update the label
             }
         }
     }

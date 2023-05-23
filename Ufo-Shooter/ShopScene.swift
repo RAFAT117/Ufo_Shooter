@@ -13,7 +13,9 @@ class ShopScene: SKScene {
     let backButton = SKLabelNode(text: "Back")
     var costLabel: SKLabelNode!
 
-    
+    let ship1 = SKSpriteNode(imageNamed: "ship1")
+    let ship2 = SKSpriteNode(imageNamed: "ship2")
+    let ship3 = SKSpriteNode(imageNamed: "ship3")
     var coinScoreLabel =  SKLabelNode(text: "Coins: 0")
 
     override func didMove(to view: SKView) {
@@ -33,6 +35,20 @@ class ShopScene: SKScene {
         costLabel.position = CGPoint(x: frame.midX, y: self.size.height * 0.7)
         addChild(costLabel)
         
+        ship1.name = "ship1"
+        ship1.setScale(0.80)
+        ship1.position = CGPoint(x: self.size.width * 0.30, y: self.size.height * 0.6)
+        addChild(ship1)
+        
+        ship2.name = "ship2"
+        ship2.setScale(0.15)
+        ship2.position = CGPoint(x: self.size.width * 0.7, y: self.size.height * 0.6)
+        addChild(ship2)
+        
+        ship3.name = "ship3"
+        ship3.setScale(0.2)
+        ship3.position = CGPoint(x: self.size.width * 0.3, y: self.size.height * 0.4)
+        addChild(ship3)
        
         
         

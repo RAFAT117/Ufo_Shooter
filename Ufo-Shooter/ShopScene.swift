@@ -11,10 +11,30 @@ import SpriteKit
 class ShopScene: SKScene {
     
     let backButton = SKLabelNode(text: "Back")
+    var costLabel: SKLabelNode!
+
     
+    var coinScoreLabel =  SKLabelNode(text: "Coins: 0")
+
     override func didMove(to view: SKView) {
         backgroundColor = .systemBrown
 
+        let coinscore = UserDefaults.standard.integer(forKey: "coin")
+        coinScoreLabel.text = "Coins: \(coinscore)"
+        coinScoreLabel.fontName = "HelveticaNeue-Bold"
+        coinScoreLabel.position = CGPoint(x: frame.midX, y: self.size.height * 0.8)
+        coinScoreLabel.fontSize = 30
+        addChild(coinScoreLabel)
+        
+        costLabel = SKLabelNode(text: "Cost : 50 coins")
+        costLabel.fontName = "HelveticaNeue-Bold"
+        costLabel.fontSize = 30
+        costLabel.fontColor = SKColor.black
+        costLabel.position = CGPoint(x: frame.midX, y: self.size.height * 0.7)
+        addChild(costLabel)
+        
+       
+        
         
         // Create a "back" button to return to the main menu
         backButton.name = "backButton"

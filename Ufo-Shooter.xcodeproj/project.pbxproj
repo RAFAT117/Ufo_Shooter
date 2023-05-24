@@ -62,9 +62,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B260C422A1E0FEC00489D40 /* Photos */ = {
+			isa = PBXGroup;
+			children = (
+				0B920F0F2A065B5900AC2603 /* background.png */,
+				0B920F252A124D5F00AC2603 /* ship1.png */,
+				0B920F092A0653BA00AC2603 /* ufo.png */,
+				0B920F272A124D6300AC2603 /* ship2.png */,
+				0B920F0B2A0653BE00AC2603 /* bullet.png */,
+				0BBB9F412A14DB80000570A3 /* coin.png */,
+				0B920F0D2A0653C300AC2603 /* enemy.png */,
+				0B920EFD2A0645DD00AC2603 /* Assets.xcassets */,
+				0B920F292A124D6600AC2603 /* ship3.png */,
+			);
+			path = Photos;
+			sourceTree = "<group>";
+		};
 		0B920EE42A0645DB00AC2603 = {
 			isa = PBXGroup;
 			children = (
+				0B260C422A1E0FEC00489D40 /* Photos */,
 				0B920EEF2A0645DB00AC2603 /* Ufo-Shooter */,
 				0B920EEE2A0645DB00AC2603 /* Products */,
 			);
@@ -84,22 +101,13 @@
 				0B920EF02A0645DB00AC2603 /* AppDelegate.swift */,
 				0B920EF22A0645DB00AC2603 /* GameScene.sks */,
 				0B920EF42A0645DB00AC2603 /* Actions.sks */,
-				0B920F0F2A065B5900AC2603 /* background.png */,
 				0B920EF62A0645DB00AC2603 /* GameScene.swift */,
 				0B920EF82A0645DB00AC2603 /* GameViewController.swift */,
 				0B920EFA2A0645DB00AC2603 /* Main.storyboard */,
-				0B920EFD2A0645DD00AC2603 /* Assets.xcassets */,
 				0B920EFF2A0645DD00AC2603 /* LaunchScreen.storyboard */,
 				0B920F072A064F1B00AC2603 /* MainMenu.swift */,
 				0B920F1D2A0E5FAC00AC2603 /* GameoverScene.swift */,
 				0B920F232A124D2B00AC2603 /* ShopScene.swift */,
-				0B920F092A0653BA00AC2603 /* ufo.png */,
-				0B920F0D2A0653C300AC2603 /* enemy.png */,
-				0B920F0B2A0653BE00AC2603 /* bullet.png */,
-				0B920F252A124D5F00AC2603 /* ship1.png */,
-				0B920F272A124D6300AC2603 /* ship2.png */,
-				0B920F292A124D6600AC2603 /* ship3.png */,
-				0BBB9F412A14DB80000570A3 /* coin.png */,
 			);
 			path = "Ufo-Shooter";
 			sourceTree = "<group>";

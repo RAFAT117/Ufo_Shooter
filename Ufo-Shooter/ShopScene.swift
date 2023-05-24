@@ -4,7 +4,7 @@
 //
 //  Created by Rafaat.Al-Badri on 2023-05-15.
 //
-
+ //d
 import UIKit
 import SpriteKit
 
@@ -73,6 +73,17 @@ class ShopScene: SKScene {
                 let mainMenuScene = MainMenu(size: self.size)
                 mainMenuScene.scaleMode = scaleMode
                 view?.presentScene(mainMenuScene, transition: transition)
+            }
+            
+            // Handle the purchase of a character
+            if ship1.frame.contains(location) || ship2.frame.contains(location) || ship3.frame.contains(location) {
+                let cost = 1
+                let coinscore = UserDefaults.standard.integer(forKey: "coin")
+                
+                if coinscore >= cost {
+                    UserDefaults.standard.set(coinscore - cost, forKey: "coin")
+                    coinScoreLabel.text = "Coins: \(coinscore - cost)"
+                }
             }
         }
     }

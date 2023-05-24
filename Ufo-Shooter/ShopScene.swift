@@ -9,7 +9,6 @@ import UIKit
 import SpriteKit
 
 class ShopScene: SKScene {
-
     
     let backButton = SKLabelNode(text: "Back")
     var costLabel: SKLabelNode!

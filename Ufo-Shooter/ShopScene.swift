@@ -12,11 +12,16 @@ class ShopScene: SKScene {
     
     let backButton = SKLabelNode(text: "Back")
     var costLabel: SKLabelNode!
+    
 
     let ship1 = SKSpriteNode(imageNamed: "ship1")
     let ship2 = SKSpriteNode(imageNamed: "ship2")
     let ship3 = SKSpriteNode(imageNamed: "ship3")
     var coinScoreLabel =  SKLabelNode(text: "Coins: 0")
+    let UFO = SKSpriteNode(imageNamed: "ufo")
+
+    var selectedCharacter = "ufo"
+
 
     override func didMove(to view: SKView) {
         backgroundColor = .systemBrown
@@ -49,6 +54,11 @@ class ShopScene: SKScene {
         ship3.setScale(0.2)
         ship3.position = CGPoint(x: self.size.width * 0.3, y: self.size.height * 0.4)
         addChild(ship3)
+        
+        UFO.name = "ufo"
+        UFO.setScale(0.2)
+        UFO.position = CGPoint(x: self.size.width * 0.7, y: self.size.height * 0.4)
+        addChild(UFO)
        
         
         
@@ -76,7 +86,7 @@ class ShopScene: SKScene {
             }
             
             // Handle the purchase of a character
-            if ship1.frame.contains(location) || ship2.frame.contains(location) || ship3.frame.contains(location) {
+            if ship1.frame.contains(location) || ship2.frame.contains(location) || ship3.frame.contains(location) || UFO.frame.contains(location) {
                 let cost = 1
                 let coinscore = UserDefaults.standard.integer(forKey: "coin")
                 
@@ -84,6 +94,17 @@ class ShopScene: SKScene {
                     UserDefaults.standard.set(coinscore - cost, forKey: "coin")
                     coinScoreLabel.text = "Coins: \(coinscore - cost)"
                 }
+                
+                if ship1.frame.contains(location){
+                    selectedCharacter = "ship1"
+                } else  if ship2.frame.contains(location){
+                    selectedCharacter = "ship2"
+                } else  if ship3.frame.contains(location){
+                    selectedCharacter = "ship3"
+                }else  if UFO.frame.contains(location){
+                    selectedCharacter = "ufo"
+                }
+                UserDefaults.standard.set(selectedCharacter, forKey: "selectedplayer")
             }
         }
     }

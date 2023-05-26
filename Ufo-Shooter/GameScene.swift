@@ -10,7 +10,6 @@ import GameplayKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
-    var UFO: SKSpriteNode!
     
     var scorelabel : SKLabelNode!
     var liveslabel : SKLabelNode!
@@ -18,6 +17,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var enemies = [SKSpriteNode]()
     var coins = [SKSpriteNode]()
     var coinsLabel: SKLabelNode!
+    var UFO = SKSpriteNode(imageNamed: "ufo")
 
     var score = 0
     var lives = 3
@@ -61,8 +61,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         coinsLabel.fontName = "HelveticaNeue-Bold"
         addChild(coinsLabel)
      
-        
-        UFO = SKSpriteNode(imageNamed: "ufo")
+        let selectedplayer = UserDefaults.standard.string(forKey: "selectedplayer") ?? "ufo"
+        UFO.texture = SKTexture(imageNamed: selectedplayer)
         UFO.position = CGPoint(x: frame.midX, y: UFO.size.height / 5)
         UFO.setScale(0.13)
         UFO.zPosition = 2;

@@ -11,9 +11,10 @@ import SpriteKit
 
 class ShopScene: SKScene {
     
-    let backButton = SKLabelNode(text: "Back")
+    let backButtonText = SKLabelNode(text: "Back")
     var costLabel: SKLabelNode!
-    
+    let backButton = SKShapeNode(rect: CGRect(x: -100, y: -23, width: 200, height: 75), cornerRadius: 10)
+
 
     let ship1 = SKSpriteNode(imageNamed: "ship1")
     let ship2 = SKSpriteNode(imageNamed: "ship2")
@@ -32,7 +33,7 @@ class ShopScene: SKScene {
         coinScoreLabel.text = "Coins: \(coinscore)"
         coinScoreLabel.fontName = "HelveticaNeue-Bold"
         coinScoreLabel.position = CGPoint(x: frame.midX, y: self.size.height * 0.8)
-        coinScoreLabel.fontSize = 30
+        coinScoreLabel.fontSize = 50
         addChild(coinScoreLabel)
         
         // cost label, how much ships cost
@@ -40,7 +41,7 @@ class ShopScene: SKScene {
         costLabel.fontName = "HelveticaNeue-Bold"
         costLabel.fontSize = 30
         costLabel.fontColor = SKColor.black
-        costLabel.position = CGPoint(x: frame.midX, y: self.size.height * 0.7)
+        costLabel.position = CGPoint(x: frame.midX, y: self.size.height * 0.73)
         addChild(costLabel)
         
         //ship nr1
@@ -70,11 +71,17 @@ class ShopScene: SKScene {
         
         
         // Create a "back" button to return to the main menu
-        backButton.name = "backButton"
-        backButton.fontName = "AvenirNext-Bold"
-        backButton.fontSize = 30
-        backButton.fontColor = SKColor.black
-        backButton.position = CGPoint(x: frame.midX, y: frame.minY + 100)
+        backButtonText.name = "backButton"
+        backButtonText.fontName = "AvenirNext-Bold"
+        backButtonText.fontSize = 45
+        backButtonText.fontColor = SKColor.black
+        backButtonText.position = CGPoint(x: frame.midX, y: frame.minY + 100)
+        addChild(backButtonText)
+        
+        backButton.fillColor = SKColor.white
+        backButton.strokeColor = SKColor.black
+        backButton.position = backButtonText.position
+        backButton.zPosition = backButtonText.zPosition - 1
         addChild(backButton)
         
         

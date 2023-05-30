@@ -12,42 +12,69 @@ import SpriteKit
 
 class MainMenu: SKScene {
     
-    let startbutton =  SKLabelNode(text: "Start Game")
-    let shopbutton =  SKLabelNode(text: "Shop")
+    let startbuttonText =  SKLabelNode(text: "Start Game")
+    let shopbuttonText =  SKLabelNode(text: "Shop")
+    let GameNameText =  SKLabelNode(text: "Ufo Shooter")
+    let startbutton = SKShapeNode(rect: CGRect(x: -150, y: -33, width: 300, height: 100), cornerRadius: 10)
+    let shopbutton = SKShapeNode(rect: CGRect(x: -100, y: -26, width: 200, height: 75), cornerRadius: 10)
+
+
    
     override func didMove(to view: SKView) {
+        backgroundColor = .systemBrown
+
+        //Start button
+        GameNameText.fontColor = .white
+        GameNameText.position = CGPoint(x: frame.midX, y: self.size.height * 0.75)
+        GameNameText.fontSize = 60
+        GameNameText.fontName = "HelveticaNeue-Bold"
+        GameNameText.name = "Ufo Shooter"
+        GameNameText.zPosition = 2;
+        addChild(GameNameText)
         
         //Start button
-        startbutton.fontColor = .white
-        startbutton.position = CGPoint(x: frame.midX, y: self.size.height * 0.5)
-        startbutton.fontSize = 50
-        startbutton.fontName = "HelveticaNeue-Bold"
-        startbutton.name = "Start Game"
-        startbutton.zPosition = 2;
+        startbuttonText.fontColor = .black
+        startbuttonText.position = CGPoint(x: frame.midX, y: self.size.height * 0.465)
+        startbuttonText.fontSize = 52.5
+        startbuttonText.fontName = "HelveticaNeue-Bold"
+        startbuttonText.name = "Start Game"
+        startbuttonText.zPosition = 2;
+        addChild(startbuttonText)
+        
+        startbutton.fillColor = SKColor.white
+        startbutton.strokeColor = SKColor.black
+        startbutton.lineWidth = 2
+        startbutton.position = startbuttonText.position
+        startbutton.zPosition = startbuttonText.zPosition - 1
         addChild(startbutton)
         
         //Shop button
-        shopbutton.fontColor = .white
-        shopbutton.position = CGPoint(x: frame.midX, y: self.size.height * 0.4)
-        shopbutton.fontSize = 40
-        shopbutton.fontName = "HelveticaNeue-Bold"
-        shopbutton.name = "Shop"
-        shopbutton.zPosition = 2;
+        shopbuttonText.fontColor = .black
+        shopbuttonText.position = CGPoint(x: frame.midX, y: self.size.height * 0.35)
+        shopbuttonText.fontSize = 40
+        shopbuttonText.fontName = "HelveticaNeue-Bold"
+        shopbuttonText.name = "Shop"
+        shopbuttonText.zPosition = 2;
+        addChild(shopbuttonText)
+        
+        shopbutton.fillColor = SKColor.white
+        shopbutton.strokeColor = SKColor.black
+        shopbutton.position = shopbuttonText.position
+        shopbutton.zPosition = shopbuttonText.zPosition - 1
         addChild(shopbutton)
+        
+        
         
         //Ufo player pic
         let UFObackground = SKSpriteNode(imageNamed: "ufo")
         UFObackground.size = self.size
-        UFObackground.position = CGPoint(x: frame.midX, y: self.size.height / 5)
-        UFObackground.setScale(0.2)
+        UFObackground.position = CGPoint(x: frame.midX, y: self.size.height / 6.5)
+        UFObackground.xScale = 0.35
+        UFObackground.yScale = 0.18
         UFObackground.zPosition = 1;
         addChild(UFObackground)
         
-        // brown background
-        let background = SKSpriteNode(color: SKColor.systemBrown, size: self.size)
-        background.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
-        background.zPosition = 0
-        addChild(background)
+  
     }
     
     // User Touches screen

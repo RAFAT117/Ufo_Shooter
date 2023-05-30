@@ -8,6 +8,7 @@
 import UIKit
 import SpriteKit
 
+
 class ShopScene: SKScene {
     
     let backButton = SKLabelNode(text: "Back")
@@ -26,6 +27,7 @@ class ShopScene: SKScene {
     override func didMove(to view: SKView) {
         backgroundColor = .systemBrown
 
+        //coin label + how much coins the user have
         let coinscore = UserDefaults.standard.integer(forKey: "coin")
         coinScoreLabel.text = "Coins: \(coinscore)"
         coinScoreLabel.fontName = "HelveticaNeue-Bold"
@@ -33,6 +35,7 @@ class ShopScene: SKScene {
         coinScoreLabel.fontSize = 30
         addChild(coinScoreLabel)
         
+        // cost label, how much ships cost
         costLabel = SKLabelNode(text: "Cost : 50 coins")
         costLabel.fontName = "HelveticaNeue-Bold"
         costLabel.fontSize = 30
@@ -40,21 +43,25 @@ class ShopScene: SKScene {
         costLabel.position = CGPoint(x: frame.midX, y: self.size.height * 0.7)
         addChild(costLabel)
         
+        //ship nr1
         ship1.name = "ship1"
         ship1.setScale(0.80)
         ship1.position = CGPoint(x: self.size.width * 0.30, y: self.size.height * 0.6)
         addChild(ship1)
         
+        //ship nr3
         ship2.name = "ship2"
         ship2.setScale(0.15)
         ship2.position = CGPoint(x: self.size.width * 0.7, y: self.size.height * 0.6)
         addChild(ship2)
         
+        //ship nr3
         ship3.name = "ship3"
         ship3.setScale(0.2)
         ship3.position = CGPoint(x: self.size.width * 0.3, y: self.size.height * 0.4)
         addChild(ship3)
         
+        //Ufo ship
         UFO.name = "ufo"
         UFO.setScale(0.2)
         UFO.position = CGPoint(x: self.size.width * 0.7, y: self.size.height * 0.4)

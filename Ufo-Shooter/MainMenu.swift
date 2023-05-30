@@ -7,14 +7,17 @@
 
 import SpriteKit
 
-let startbutton =  SKLabelNode(text: "Start Game")
-let shopbutton =  SKLabelNode(text: "Shop")
 
+//Start Screen
 
 class MainMenu: SKScene {
     
+    let startbutton =  SKLabelNode(text: "Start Game")
+    let shopbutton =  SKLabelNode(text: "Shop")
+   
     override func didMove(to view: SKView) {
         
+        //Start button
         startbutton.fontColor = .white
         startbutton.position = CGPoint(x: frame.midX, y: self.size.height * 0.5)
         startbutton.fontSize = 50
@@ -23,15 +26,16 @@ class MainMenu: SKScene {
         startbutton.zPosition = 2;
         addChild(startbutton)
         
+        //Shop button
         shopbutton.fontColor = .white
         shopbutton.position = CGPoint(x: frame.midX, y: self.size.height * 0.4)
         shopbutton.fontSize = 40
         shopbutton.fontName = "HelveticaNeue-Bold"
         shopbutton.name = "Shop"
         shopbutton.zPosition = 2;
-
         addChild(shopbutton)
         
+        //Ufo player pic
         let UFObackground = SKSpriteNode(imageNamed: "ufo")
         UFObackground.size = self.size
         UFObackground.position = CGPoint(x: frame.midX, y: self.size.height / 5)
@@ -39,12 +43,14 @@ class MainMenu: SKScene {
         UFObackground.zPosition = 1;
         addChild(UFObackground)
         
+        // brown background
         let background = SKSpriteNode(color: SKColor.systemBrown, size: self.size)
         background.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
         background.zPosition = 0
         addChild(background)
     }
     
+    // User Touches screen
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first{
             let location = touch.location(in: self)

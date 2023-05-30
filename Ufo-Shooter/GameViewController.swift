@@ -20,7 +20,6 @@ class GameViewController: UIViewController {
             let playableWidth = view.bounds.width
             let playableHeight = view.bounds.height
             let scene = MainMenu (size: CGSize(width: playableWidth, height: playableHeight))
-                // Set the scale mode to scale to fit the window
                 scene.scaleMode = .aspectFill
                 
                 // Present the scene

@@ -22,7 +22,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var score = 0
     var lives = 3
     var Onecoin = 0
-
+    
+    
+    // Category bitmask
     let playerCategory = UInt32(1)
     let enemyCategory = UInt32(2)
     let bulletCategory = UInt32(4)
@@ -31,15 +33,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func didMove(to view: SKView) {
         
-        physicsWorld.contactDelegate = self
+        physicsWorld.contactDelegate = self // Set physics contact delegate
 
-        
+        // background
         let background = SKSpriteNode(imageNamed: "background")
         background.size = CGSize(width: self.size.width * 1.34, height: self.size.height * 1.34)
         background.position = CGPoint(x: self.size.width/2, y: self.size.height/2)
         background.zPosition = 0;
         addChild(background)
         
+        //score label
         scorelabel = SKLabelNode(text: "Score: \(score)")
         scorelabel.position = CGPoint(x: self.size.width * 0.15, y: self.size.height * 0.9)
         scorelabel.fontSize = 25
@@ -47,6 +50,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         scorelabel.fontName = "HelveticaNeue-Bold"
         addChild(scorelabel)
         
+        //lives label
         liveslabel = SKLabelNode(text: "Lives: \(lives)")
         liveslabel.position = CGPoint(x: self.size.width * 0.85, y: self.size.height * 0.9)
         liveslabel.fontSize = 25
@@ -60,7 +64,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         coinsLabel.zPosition = 200
         coinsLabel.fontName = "HelveticaNeue-Bold"
         addChild(coinsLabel)
-     
+        
+        // Create player
         let selectedplayer = UserDefaults.standard.string(forKey: "selectedplayer") ?? "ufo"
         UFO.texture = SKTexture(imageNamed: selectedplayer)
         UFO.position = CGPoint(x: frame.midX, y: UFO.size.height / 5)
@@ -70,10 +75,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         UFO.physicsBody?.isDynamic = false
         UFO.physicsBody?.categoryBitMask = playerCategory
         UFO.physicsBody?.contactTestBitMask = enemyCategory
-        
-
         addChild(UFO)
         
+        // Spawn enemies at regular intervals
         let spawn = SKAction.run(spawnEnemy)
         let wait = SKAction.wait(forDuration: 1.0)
         let sequence = SKAction.sequence([spawn, wait])
@@ -81,6 +85,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         run(spawnForEver)
     }
     
+    //spawn enemy from above
     func spawnEnemy(){
         let enemy = SKSpriteNode(imageNamed: "enemy")
         enemy.position = CGPoint(x: CGFloat.random(in: 0..<size.width), y: size.height)
@@ -99,7 +104,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     }
     
-    
+    // handle touches
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
             let location = touch.location(in: self)
@@ -120,15 +125,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    
+    // Function called when a physics contact occurs between two bodies
     func didBegin(_ contact: SKPhysicsContact) {
         let firstBody = contact.bodyA
         let secondBody = contact.bodyB
         
+        // Collision between bullet and enemy
         if (firstBody.categoryBitMask == bulletCategory && secondBody.categoryBitMask == enemyCategory) ||
             (firstBody.categoryBitMask == enemyCategory && secondBody.categoryBitMask == bulletCategory) {
             
             if let bullet = bullets.first(where: { $0.physicsBody == firstBody || $0.physicsBody == secondBody }),
-               let enemy = enemies.first(where: { $0.physicsBody == firstBody || $0.physicsBody == secondBody }) {
+               let enemy = enemies.first(where: { $0.physicsBody == firstBody || $0.physicsBody == secondBody
+                   // Find the specific bullet and enemy involved in the collision
+               }) {
+                
                 bullet.removeFromParent()
                 enemy.removeFromParent()
                 bullets.removeAll(where: { $0 == bullet })
@@ -152,10 +163,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
             
             
-            
+            // Collision between enemy and player
         } else if (firstBody.categoryBitMask == enemyCategory && secondBody.categoryBitMask == playerCategory) ||
                     (firstBody.categoryBitMask == playerCategory && secondBody.categoryBitMask == enemyCategory) {
             if lives > 1 {
+                // Player has more than 1 life remaining
                 
                 lives -= 1
                 liveslabel.text = "Lives: \(lives)"
@@ -165,6 +177,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     
                 }
             } else {
+                // Player has lost all lives
+
                 lives = 0
                 liveslabel.text = "Lives: \(lives)"
                 UFO.removeFromParent()
@@ -191,8 +205,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 bullets.removeAll()
                 enemies.removeAll()
             }
-        } else if (firstBody.categoryBitMask == playerCategory && secondBody.categoryBitMask == coinCategory) ||
+        }
+        // Collision between player and coin
+        else if (firstBody.categoryBitMask == playerCategory && secondBody.categoryBitMask == coinCategory) ||
                     (firstBody.categoryBitMask == playerCategory && secondBody.categoryBitMask == coinCategory) {
+            
             // The player has collected a coin
             if let coin = coins.first(where: { $0.physicsBody == firstBody || $0.physicsBody == secondBody }) {
                 coin.removeFromParent()
@@ -203,8 +220,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    // Function called every frame update
     override func update(_ currentTime: TimeInterval) {
         enemies.forEach { enemy in
+            
+            // Enemy has reached the bottom of the screen
             if enemy.position.y <= 0 {
                 enemy.removeFromParent()
                 enemies.removeAll(where: { $0 == enemy })
@@ -241,6 +261,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    // player can move left or right
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch: AnyObject in touches {
             let location = touch.location(in: self)

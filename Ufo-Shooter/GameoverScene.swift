@@ -18,11 +18,13 @@ class GameoverScene: SKScene {
     override func didMove(to view: SKView) {
         backgroundColor = .systemBrown
         
+        //game over text
         gameoverLabel.fontName = "HelveticaNeue-Bold"
         gameoverLabel.position = CGPoint(x: frame.midX, y: self.size.height * 0.8)
         gameoverLabel.fontSize = 50
         addChild(gameoverLabel)
         
+        //highscore label + user highest score
         let highScore = UserDefaults.standard.integer(forKey: "highscore")
         highScoreLabel.text = "High Score: \(highScore)"
         highScoreLabel.fontName = "HelveticaNeue-Bold"
@@ -30,6 +32,7 @@ class GameoverScene: SKScene {
         highScoreLabel.fontSize = 30
         addChild(highScoreLabel)
         
+        // coins text + how much coins user have
         let coinscore = UserDefaults.standard.integer(forKey: "coin")
         coinScoreLabel.text = "Coins: \(coinscore)"
         coinScoreLabel.fontName = "HelveticaNeue-Bold"
@@ -37,17 +40,20 @@ class GameoverScene: SKScene {
         coinScoreLabel.fontSize = 30
         addChild(coinScoreLabel)
         
+        //play again button
         playAgainButton.fontName = "HelveticaNeue-Bold"
         playAgainButton.position = CGPoint(x: frame.midX, y: self.size.height * 0.4)
         playAgainButton.fontSize = 42
         addChild(playAgainButton)
         
+        //shop button
         shopbutton.fontName = "HelveticaNeue-Bold"
         shopbutton.position = CGPoint(x: frame.midX, y: self.size.height * 0.3)
         shopbutton.fontSize = 42
         addChild(shopbutton)
     }
     
+    //handle touches with buttons
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
             let location = touch.location(in: self)

@@ -24,7 +24,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var Onecoin = 0
     
     
-    // Category bitmask
+    // Unique Category bitmask
     let playerCategory = UInt32(1)
     let enemyCategory = UInt32(2)
     let bulletCategory = UInt32(4)

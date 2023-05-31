@@ -101,7 +101,7 @@ class ShopScene: SKScene {
             
             // Handle the purchase of a character
             if ship1.frame.contains(location) || ship2.frame.contains(location) || ship3.frame.contains(location) || UFO.frame.contains(location) {
-                let cost = 1
+                let cost = 50
                 let coinscore = UserDefaults.standard.integer(forKey: "coin")
                 
                 if coinscore >= cost {

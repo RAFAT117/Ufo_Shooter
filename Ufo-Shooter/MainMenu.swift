@@ -23,7 +23,7 @@ class MainMenu: SKScene {
     override func didMove(to view: SKView) {
         backgroundColor = .systemBrown
 
-        //Start button
+        //Game name text
         GameNameText.fontColor = .white
         GameNameText.position = CGPoint(x: frame.midX, y: self.size.height * 0.75)
         GameNameText.fontSize = 60
@@ -82,12 +82,11 @@ class MainMenu: SKScene {
         if let touch = touches.first{
             let location = touch.location(in: self)
             if startbutton.contains(location) {
-                
                 let GoToscene = GameScene(size: self.size)
                 GoToscene.scaleMode = self.scaleMode
                 view?.presentScene(GoToscene)
-            } else if shopbutton.contains(location) {
                 
+            } else if shopbutton.contains(location) {
                 let GoToshop = ShopScene(size: self.size)
                 GoToshop.scaleMode = self.scaleMode
                 view?.presentScene(GoToshop)

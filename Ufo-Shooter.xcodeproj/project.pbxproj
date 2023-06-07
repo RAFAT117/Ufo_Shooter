@@ -98,14 +98,14 @@
 		0B920EEF2A0645DB00AC2603 /* Ufo-Shooter */ = {
 			isa = PBXGroup;
 			children = (
-				0B920EF02A0645DB00AC2603 /* AppDelegate.swift */,
-				0B920EF22A0645DB00AC2603 /* GameScene.sks */,
-				0B920EF42A0645DB00AC2603 /* Actions.sks */,
-				0B920EF62A0645DB00AC2603 /* GameScene.swift */,
-				0B920EF82A0645DB00AC2603 /* GameViewController.swift */,
 				0B920EFA2A0645DB00AC2603 /* Main.storyboard */,
 				0B920EFF2A0645DD00AC2603 /* LaunchScreen.storyboard */,
+				0B920EF02A0645DB00AC2603 /* AppDelegate.swift */,
+				0B920EF82A0645DB00AC2603 /* GameViewController.swift */,
+				0B920EF22A0645DB00AC2603 /* GameScene.sks */,
+				0B920EF42A0645DB00AC2603 /* Actions.sks */,
 				0B920F072A064F1B00AC2603 /* MainMenu.swift */,
+				0B920EF62A0645DB00AC2603 /* GameScene.swift */,
 				0B920F1D2A0E5FAC00AC2603 /* GameoverScene.swift */,
 				0B920F232A124D2B00AC2603 /* ShopScene.swift */,
 			);

@@ -107,18 +107,19 @@ class ShopScene: SKScene {
                 if coinscore >= cost {
                     UserDefaults.standard.set(coinscore - cost, forKey: "coin")
                     coinScoreLabel.text = "Coins: \(coinscore - cost)"
+                    
+                    
+                    if ship1.frame.contains(location){
+                        selectedCharacter = "ship1"
+                    } else  if ship2.frame.contains(location){
+                        selectedCharacter = "ship2"
+                    } else  if ship3.frame.contains(location){
+                        selectedCharacter = "ship3"
+                    }else  if UFO.frame.contains(location){
+                        selectedCharacter = "ufo"
+                    }
+                    UserDefaults.standard.set(selectedCharacter, forKey: "selectedplayer")
                 }
-                
-                if ship1.frame.contains(location){
-                    selectedCharacter = "ship1"
-                } else  if ship2.frame.contains(location){
-                    selectedCharacter = "ship2"
-                } else  if ship3.frame.contains(location){
-                    selectedCharacter = "ship3"
-                }else  if UFO.frame.contains(location){
-                    selectedCharacter = "ufo"
-                }
-                UserDefaults.standard.set(selectedCharacter, forKey: "selectedplayer")
             }
         }
     }
